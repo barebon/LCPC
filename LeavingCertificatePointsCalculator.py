@@ -24,9 +24,7 @@ point_list = []
 shortlist = []
 total_points = 0
 
-import unicodedata
-def remove_diacritic(input):
-    return unicodedata.normalize('NFKD', input).encode('ASCII', 'ignore')
+from unidecode import unidecode as remove_diacritic
 
 number_of_subjects = int(input("How many subjects did you sit for your Leaving Certificate? Please input as a number (e.g. \"1\" not \"one\"): "))
 for i in range(number_of_subjects):
@@ -37,16 +35,16 @@ for i in range(number_of_subjects):
 
     if lowered_subject in lcvp:
         level = "common"
-        sanitised_level = level
+        sanitised_level = "common"
 
     else:
         if lowered_subject in irish or lowered_subject in maths:
             level = str.lower(input("Did you sit Higher, Ordinary or Foundation Level {}? ".format(subject)))
-            sanitised_level = level
+            sanitised_level = remove_diacritic(level)
 
         else:
             level = str.lower(input("Did you sit Higher or Ordinary Level {}? ".format(subject)))
-            sanitised_level = level
+            sanitised_level = remove_diacritic(level)
 
 
     if sanitised_level in higher_level:
@@ -58,7 +56,6 @@ for i in range(number_of_subjects):
                     if points >= 46:
                         points = points + 25
                 print("You receieved {} points from this subject.".format(str(points)))
-                #Alternative: print("From this subject, your points were " + str(points))
                 point_list.append(points)
 
     if sanitised_level in ordinary_level:
@@ -67,7 +64,6 @@ for i in range(number_of_subjects):
             if grade == ordinary_grade:
                 points = ordinary_grade_points[ordinary_grades.index(grade)]
                 print("You receieved {} points from this subject.".format(str(points)))
-                #Alternative: print("From this subject, your points were " + str(points))
                 point_list.append(points)
 
     if sanitised_level in foundation_level:
@@ -76,7 +72,6 @@ for i in range(number_of_subjects):
             if grade == foundation_grade:
                 points = foundation_grade_points[foundation_grades.index(grade)]
                 print("You receieved {} points from this subject.".format(str(points)))
-                #Alternative: print("From this subject, your points were " + str(points))
                 point_list.append(points)
 
     if sanitised_level == "common":
@@ -85,7 +80,6 @@ for i in range(number_of_subjects):
             if grade == common_grade:
                 points = common_grade_points[common_grades.index(grade)]
                 print("You receieved {} points from this subject.".format(str(points)))
-                #Alternative: print("From this subject, your points were " + str(points))
                 point_list.append(points)
 
 point_list.sort(reverse = True)
