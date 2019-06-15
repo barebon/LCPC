@@ -1,4 +1,4 @@
-#Global Array:
+# Global Array:
 
 higher_level = ["h", "a", "hl", "al", "higher", "higher level", "honours", "honours level", "honors" "honors level", "hons", "ardleibheal", "ard"]
 ordinary_level = ["o", "p", "g", "ol", "gl", "ordinary", "ordinary level", "pass", "pass level", "gnath", "gnathleibheal",]
