@@ -1,4 +1,4 @@
-Leaving Certificate Points Calculator [Version 1.0]
+Leaving Certificate Points Calculator [Version 1.1]
 
 This is a basic text-based program which calculates the total number of CAO points scored in the Irish Leaving Certificate Examinations.
 
